@@ -2,6 +2,7 @@ package com.example.helloworld.resources;
 
 import com.example.helloworld.core.Person;
 import com.example.helloworld.db.PersonDAO;
+import com.google.inject.Inject;
 import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.ws.rs.GET;
@@ -17,6 +18,7 @@ public class PeopleResource {
 
     private final PersonDAO peopleDAO;
 
+    @Inject
     public PeopleResource(PersonDAO peopleDAO) {
         this.peopleDAO = peopleDAO;
     }

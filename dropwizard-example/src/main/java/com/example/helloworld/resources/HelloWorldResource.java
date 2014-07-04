@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.example.helloworld.core.Saying;
 import com.example.helloworld.core.Template;
 import com.google.common.base.Optional;
+import com.google.inject.Inject;
 import io.dropwizard.jersey.caching.CacheControl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,7 @@ public class HelloWorldResource {
     private final Template template;
     private final AtomicLong counter;
 
+    @Inject
     public HelloWorldResource(Template template) {
         this.template = template;
         this.counter = new AtomicLong();

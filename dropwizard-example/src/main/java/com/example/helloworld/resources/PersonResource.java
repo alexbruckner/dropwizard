@@ -4,6 +4,7 @@ import com.example.helloworld.core.Person;
 import com.example.helloworld.db.PersonDAO;
 import com.example.helloworld.views.PersonView;
 import com.google.common.base.Optional;
+import com.google.inject.Inject;
 import com.sun.jersey.api.NotFoundException;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.params.LongParam;
@@ -20,6 +21,7 @@ public class PersonResource {
 
     private final PersonDAO peopleDAO;
 
+    @Inject
     public PersonResource(PersonDAO peopleDAO) {
         this.peopleDAO = peopleDAO;
     }

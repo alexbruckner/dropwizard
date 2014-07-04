@@ -4,6 +4,7 @@ import com.example.helloworld.core.Template;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
+import org.hibernate.SessionFactory;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotNull;
 
 public class HelloWorldConfiguration extends Configuration {
     @NotEmpty
-    private String template;
+    private String template = "test %s";
 
     @NotEmpty
     private String defaultName = "Stranger";
@@ -52,5 +53,10 @@ public class HelloWorldConfiguration extends Configuration {
     @JsonProperty("database")
     public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
         this.database = dataSourceFactory;
+    }
+
+    @JsonProperty
+    public SessionFactory getSessionFactory() {
+        return HelloWorldApplication.hibernateBundle.getSessionFactory();
     }
 }
